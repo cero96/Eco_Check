@@ -1,127 +1,105 @@
+/* Reseteo básico */
 * {
-    box-sizing: border-box; 
-    margin: 0;              
-    padding: 0;            
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+/* Estructura de la página */
 html, body {
-    height: 100%;          
-    width: 100%;           
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
 }
 
+/* Contenedor principal */
 .container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);  /* Tres columnas por defecto */
-    grid-template-rows: repeat(6, 1fr);     /* Seis filas */
-    gap: 10px;
-    background-color: #8FC0A9;
-    height: 100vh;
-    width: 100vw;  
+    grid-template-columns: 1fr 1fr 1fr;  /* Tres columnas por defecto */
+    grid-template-rows: auto;  /* Altura automática según contenido */
+    gap: 20px;
+    padding: 20px;
+    background-color: #e1f2e3;  /* Verde claro de fondo */
 }
 
+/* Estilos de los ítems */
 .item1 {
-    grid-column: 2 / -2;
-    grid-row: 1;   
-    background-color: #C8D5B9;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: xx-large;
-    border-radius: 1pc;
+    grid-column: span 3;  /* Ocupa las tres columnas */
+    text-align: center;
+    background-color: #82c79d;  /* Verde oscuro */
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
 }
 
 .item2 {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    background-color: #C8D5B9;
-    margin: 0 20px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-radius: 2pc;
+    background-color: #b0d5a3;
+    padding: 10px;
+    border-radius: 8px;
+    gap: 10px;
+}
+
+.item2 button {
+    background-color: #2c6d2f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.item2 button:hover {
+    background-color: #1f5d24;
 }
 
 .item3 {
-    grid-column: 1 / -2;
-    grid-row: 3 / -2;
-    background-color: #C8D5B9;
-    margin: 10px 5px;
-    border-radius: 2pc;
+    grid-column: span 3;
+    background-color: #c5e8c0;
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .item_hijo3 {
-    text-align: center;
-    margin-top: 10px;
-    background-color: #9EBC9F;
-    margin: 10px 20px;
-    padding: 10px; 
-    border-radius: 2pc; 
+    margin-bottom: 20px;
 }
 
 .hijo3 {
-    background-color: #9EBC9F;
-    margin: 10px 20px;
-    padding: 120px; 
-    border-radius: 2pc; 
-}
-
-.url {
-    display: flex;   
-    align-items: center;          
-    background-color: #C8D5B9;
-    margin: 40px;
-    padding: 5px;
-    border-radius: 5px;
-}
-
-input[type="text"] {
-    flex: 1; 
-    padding: 10px;
-    border: none; 
-    border-radius: 5px;
-    margin-right: 10px;
-    font-size: 16px;
-}
-
-button {
-    background-color: #6a8f3d;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #5f7c2e;
+    background-color: #a8d6a3;
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .item4 {
-    grid-column: 3;
-    grid-row: 3 / -2;
-    background-color: #C8D5B9;
-    margin: 10px 20px;
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
 }
 
-.item4_hijo1,
-.item4_hijo2,
-.item4_hijo3,
-.item4_hijo4 {
+.item4 div {
+    background-color: #c5e8c0;
+    padding: 20px;
+    border-radius: 8px;
     text-align: center;
-    background-color: #9EBC9F;
-    margin: 10px 5px;
-    padding: 40px;
-    border-radius: 2pc;
 }
 
 .item5 {
-    grid-column: 1 / -1;
-    grid-row: 6;
-    background-color: #C8D5B9;
-    margin: 10px 20px;
+    grid-column: span 3;
+    background-color: #c5e8c0;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.item5 ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.item5 li {
+    margin: 10px 0;
 }
 
 /* Media Queries para hacerlo responsive */
@@ -129,41 +107,30 @@ button:hover {
 /* Pantallas medianas */
 @media (max-width: 900px) {
     .container {
-        grid-template-columns: repeat(2, 1fr);  /* 2 columnas en pantallas medianas */
-        grid-template-rows: repeat(6, auto);   /* Ajusta la altura de las filas */
+        grid-template-columns: 1fr 1fr;  /* Dos columnas en pantallas medianas */
     }
 
-    .item1, .item2, .item3, .item4, .item5 {
-        margin: 10px;  /* Reducimos el margen entre elementos */
+    .item2 {
+        flex-direction: column;
+        gap: 10px;
     }
 
-    .item_hijo3, .hijo3 {
-        padding: 50px;  /* Reducimos el padding en pantallas medianas */
+    .item3, .item4, .item5 {
+        grid-column: span 2;  /* Ocuparán dos columnas */
     }
 }
 
 /* Pantallas pequeñas */
 @media (max-width: 600px) {
     .container {
-        grid-template-columns: 1fr;  /* 1 columna en pantallas pequeñas */
-        grid-template-rows: auto;   /* Las filas se ajustan automáticamente */
+        grid-template-columns: 1fr;  /* Una sola columna en pantallas pequeñas */
     }
 
-    .item1, .item2, .item3, .item4, .item5 {
-        margin: 5px;  /* Reducimos aún más el margen */
+    .item2 {
+        flex-direction: column;
     }
 
-    .item_hijo3, .hijo3 {
-        padding: 30px;  /* Menor padding en pantallas pequeñas */
-    }
-
-    .url {
-        flex-direction: column;  /* Cambiamos la dirección del contenido en URL */
-        margin: 20px;  /* Ajustamos el margen */
-    }
-
-    input[type="text"], button {
-        width: 100%;  /* Hacemos que el input y el botón ocupen todo el ancho */
-        margin: 5px 0;  /* Ajustamos el margen */
+    .item3, .item4, .item5 {
+        grid-column: span 1;  /* Ocuparán toda la columna */
     }
 }
